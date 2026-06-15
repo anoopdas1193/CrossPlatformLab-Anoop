@@ -1,0 +1,43 @@
+name: Multi-OS Testing - Anoop
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize Ubuntu Test
+        run: echo "Testing on Ubuntu..."
+
+      - name: Check Operating System Info
+        run: uname -a
+
+      - name: Generate Local Log File
+        run: echo "Ubuntu test by Anoop" > test-ubuntu.txt
+
+      - name: Verify Output Log
+        run: cat test-ubuntu.txt
+
+      - name: Complete Ubuntu Build
+        run: echo "Ubuntu tests completed"
+
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Initialize Windows Test
+        run: echo "Testing on Windows..."
+
+      - name: Check Operating System Info
+        run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+
+      - name: Generate Local Log File
+        run: echo "Windows test by Anoop" > test-windows.txt
+
+      - name: Verify Output Log
+        run: type test-windows.txt
+
+      - name: Complete Windows Build
+        run: echo "Windows tests completed"
